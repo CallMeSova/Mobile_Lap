@@ -86,13 +86,13 @@ class _AddDiaryPageState extends State<AddDiaryPage> {
                   key: const Key('title-field'),
                   controller: _titleController,
                   decoration: const InputDecoration(
-                    labelText: 'ชื่อโปเกม่อน',
+                    labelText: 'ชื่อเรื่อง',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.title),
                   ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return 'กรุณากรอกชื่อโปเกม่อน';
+                      return 'กรุณากรอกชื่อเรื่อง';
                     }
                     return null;
                   },
@@ -103,14 +103,14 @@ class _AddDiaryPageState extends State<AddDiaryPage> {
                   controller: _contentController,
                   maxLines: 5,
                   decoration: const InputDecoration(
-                    labelText: 'ชื่อโปเกม่อน',
+                    labelText: 'เนื้อหา',
                     alignLabelWithHint: true,
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.notes),
                   ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return 'กรอกชื่อโปเกม่อน';
+                      return 'กรุณากรอกเนื้อหา';
                     }
                     return null;
                   },
@@ -120,7 +120,7 @@ class _AddDiaryPageState extends State<AddDiaryPage> {
                   key: const Key('mood-field'),
                   initialValue: _selectedMood,
                   decoration: const InputDecoration(
-                    labelText: 'อารมณ์โปเกมอน',
+                    labelText: 'อารมณ์วันนี้',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.mood),
                   ),

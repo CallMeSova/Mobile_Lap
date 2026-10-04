@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:http/http.dart' as http;
 
@@ -9,12 +8,11 @@ import 'quote.dart';
 
 /// ติดต่อ API คำคม และแปลงข้อผิดพลาดทางเทคนิคให้ผู้ใช้เข้าใจได้
 class ApiService {
-  final id = Random().nextInt(151) + 1;
   static Future<Quote> fetchQuote() async {
     try {
       // ใส่ timestamp เพื่อไม่ให้ browser/proxy ส่งคำตอบเก่าจาก cache
       // เมื่อผู้ใช้กดรีเฟรช จะได้เรียกคำคมใหม่จริง ๆ ทุกครั้ง
-      final url = Uri.https('pokeapi.co', '/api/v2/pokemon/10', {
+      final url = Uri.https('dummyjson.com', '/quotes/random', {
         '_': DateTime.now().millisecondsSinceEpoch.toString(),
       });
       final response = await http

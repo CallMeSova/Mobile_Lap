@@ -96,7 +96,7 @@ class _DiaryListPageState extends State<DiaryListPage> {
     try {
       await DatabaseHelper.insert(
         Diary(
-          title: 'โปเกม่อนนน',
+          title: 'คำคมประจำวัน',
           content: quote.text,
           quote: quote.text,
           date: _formatToday(),
@@ -107,11 +107,11 @@ class _DiaryListPageState extends State<DiaryListPage> {
       if (!mounted) return;
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('บันทึกโปเกมอนแล้ว')));
+      ).showSnackBar(const SnackBar(content: Text('บันทึกคำคมลงไดอารีแล้ว')));
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('บันทึกโปเกมอนไม่สำเร็จ กรุณาลองใหม่')),
+        const SnackBar(content: Text('บันทึกคำคมไม่สำเร็จ กรุณาลองใหม่')),
       );
     }
   }
@@ -128,10 +128,7 @@ class _DiaryListPageState extends State<DiaryListPage> {
               children: [
                 CircularProgressIndicator(),
                 SizedBox(height: 8),
-                Text(
-                  'กำลังโหลดโปเกเดกซ์...',
-                  style: TextStyle(color: Colors.grey),
-                ),
+                Text('กำลังโหลดคำคม...', style: TextStyle(color: Colors.grey)),
               ],
             ),
           );
@@ -149,7 +146,7 @@ class _DiaryListPageState extends State<DiaryListPage> {
                   children: [
                     const Icon(Icons.cloud_off, color: Colors.red, size: 32),
                     const SizedBox(height: 8),
-                    const Text('โหลดโปเกมอนไม่ได้'),
+                    const Text('โหลดคำคมไม่ได้'),
                     const SizedBox(height: 4),
                     Text(
                       message,
@@ -194,8 +191,7 @@ class _DiaryListPageState extends State<DiaryListPage> {
               ),
               const SizedBox(height: 8),
               Text(
-                // '— ${quote.author}',
-                '—',
+                '— ${quote.author}',
                 style: const TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 8),
@@ -203,7 +199,7 @@ class _DiaryListPageState extends State<DiaryListPage> {
                 key: const Key('save-quote-button'),
                 onPressed: () => _saveQuote(quote),
                 icon: const Icon(Icons.bookmark_add_outlined),
-                label: const Text('บันทึกโปเกมอนนี้'),
+                label: const Text('บันทึกคำคมนี้'),
               ),
             ],
           ),
@@ -410,12 +406,12 @@ class _DiaryListPageState extends State<DiaryListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('เปเกเดกซ์ (${diaries.length})'),
+        title: Text('บันทึกของฉัน (${diaries.length})'),
         centerTitle: true,
         actions: [
           IconButton(
             key: const Key('refresh-quote-button'),
-            tooltip: 'รีเฟรชโปเกดกซ์',
+            tooltip: 'รีเฟรชคำคม',
             onPressed: _refreshQuote,
             icon: const Icon(Icons.refresh),
           ),
@@ -495,10 +491,7 @@ class _MainPageState extends State<MainPage> {
         selectedItemColor: Colors.indigo,
         onTap: (index) => setState(() => selectedIndex = index),
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: 'โปเกดกซ์',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'บันทึก'),
           BottomNavigationBarItem(icon: Icon(Icons.info), label: 'เกี่ยวกับ'),
         ],
       ),
