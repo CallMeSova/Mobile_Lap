@@ -5,6 +5,7 @@ import 'database_helper.dart';
 import 'diary.dart';
 import 'diary_detail_page.dart';
 import 'api_service.dart';
+import 'api_diary_page.dart';
 import 'quote.dart';
 
 void main() {
@@ -480,7 +481,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int selectedIndex = 0;
-  final List<Widget> pages = const [DiaryListPage(), AboutPage()];
+  final List<Widget> pages = const [
+    DiaryListPage(),
+    ApiDiaryPage(),
+    AboutPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -491,7 +496,8 @@ class _MainPageState extends State<MainPage> {
         selectedItemColor: Colors.indigo,
         onTap: (index) => setState(() => selectedIndex = index),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'บันทึก'),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'บันทึก'),
+          BottomNavigationBarItem(icon: Icon(Icons.cloud), label: 'ออนไลน์'),
           BottomNavigationBarItem(icon: Icon(Icons.info), label: 'เกี่ยวกับ'),
         ],
       ),
